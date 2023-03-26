@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-_result=false
+_ecr_upload=false
 _base_env='dev stag stg'
 _env=dev
 _appName=''
@@ -23,7 +23,7 @@ else
  fi 
 fi
 
-if $_result; then 
+if $_ecr_upload; then 
  aws ecr get-login-password --region ap-northeast-2 --profile admin | docker login --username AWS --password-stdin 143708603037.dkr.ecr.ap-northeast-2.amazonaws.com
  docker tag $_appName 143708603037.dkr.ecr.ap-northeast-2.amazonaws.com/$_appName
  docker push 143708603037.dkr.ecr.ap-northeast-2.amazonaws.com/$_appName
