@@ -1,0 +1,25 @@
+spring:
+  server:
+    profiles: local
+    port: 8080
+
+env:
+  frog:
+    bleat: "ribbit-ribbit"
+  appVersion: '1.0'
+  projectName: 'gaegul'
+
+  #appVersion: ${appVersion}
+  #projectName: ${projectName}
+logging:
+  pattern:
+    file: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+  file:
+    name: /logs/frog.log
+  level:
+    org:
+      springframework: INFO
+  logback:
+    rolling policy:
+      file-name-pattern: "/logs/frog.%d{yyyy-MM-dd}.%i"
+      max-history: 30
